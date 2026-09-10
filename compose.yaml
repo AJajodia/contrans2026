@@ -8,7 +8,36 @@ services:
       - "8050:8050"
     volumes:
       - .:/contrans2026
+    networks:
+      - dbnetwork
 
   postgres:
-    image: postgres:lastest
-    ports: 
+    image: postgres:18.6
+    ports:
+      - "5432:5432" # what port does the software run on
+    volumes:
+      - postgresdata:/var/lib/postgresql/18/docker # where is the data
+    env_file:
+      - .env # given to the container for secret credentials, passwords etc
+    networks:
+      - dbnetwork
+
+  neo4j:
+    image: neo4j:2026.07.1-community-trixie
+    ports:
+      - "7474:7474"
+    volumes:
+      - neo4jdata:/data
+    env_file:
+      - .env
+    networks:
+      - dbnetwork
+
+# where do we put credentials etc. that we don't want to share (environmental variables)
+
+volumes:
+  postgresdata:
+  neo4jdata:
+
+networks:
+  dbnetwork:
