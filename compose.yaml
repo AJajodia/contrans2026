@@ -22,16 +22,6 @@ services:
     networks:
       - dbnetwork
 
-  neo4j:
-    image: neo4j:2026.07.1-community-trixie
-    ports:
-      - "7474:7474"
-    volumes:
-      - neo4jdata:/data
-    env_file:
-      - .env
-    networks:
-      - dbnetwork
 
 # where do we put credentials etc. that we don't want to share (environmental variables)
 
