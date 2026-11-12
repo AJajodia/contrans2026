@@ -1,0 +1,17 @@
+prefect
+
+pandas
+
+numpy
+
+requests
+
+pyyaml
+
+pyarrow
+
+python-dotenv
+
+sqlalchemy
+
+psycopg[binary]
